@@ -21,23 +21,34 @@ def read_data(file_name, field):
             sequential_data = data [field]
             return sequential_data
 
-
-
+def linear_search (sequence, target):
     positions = []
-    count []
-    for 1, num in enumerate (sequence):
+    count = []
+    for i, num in enumerate (sequence):
         if num == target:
             positions.append()
             count +=1
     return {"positions": positions, "count": count}
 
+import json
+with open("sequential.json", "r") as data_file:
+    data = json.load(data_file)
+    sequence = data
+def pattern_search(sequence, pattern):
+    positions = set()
+    seq_length = len(sequence)
+    pattern_length = len(pattern)
+    for i in range (seq_length - pattern_length + 1):
+        if sequence[i:i + pattern_length] == pattern:
+            positions.add((i+pattern_length)/2)
+    return positions
+
 def main():
     pass
     sequential_data = read_data ("sequential.json", "unordered_numbers")
     print("Sequential Data:", sequential_data)
+    pattern = "ATA"
 
-# def linear_search(sekvence, cislo):
-#     return posit
 #
 #
 #     import json
@@ -57,11 +68,10 @@ def main():
 #     pass
 #     sequential_data = read_data ("sequential.json", "unordered_numbers")
 #     print("Sequential Data:", sequential_data)
-#
-# def linear_search(sekvence, cislo):
-#     return posit
+
 
 
 if __name__ == '__main__':
     main()
-    linear_search()
+    target = 2 #toto se ma taky zadavat?
+    linear_search (sequence, target)
