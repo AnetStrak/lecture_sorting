@@ -43,6 +43,26 @@ def pattern_search(sequence, pattern):
             positions.add((i+pattern_length)/2)
     return positions
 
+import json
+with open("sequential.json", "r") as data_file:
+    data = json.load(data_file)
+    for key in data.keys():
+            seznam = data [ordered_numbers]
+
+def binary_search(seznam, hledane_cislo):
+    for cislo in seznam:
+        if cislo == hledane_cislo:
+            pozice = enumerate (seznam [:hledane_cislo])
+            return pozice
+        else:
+            return None
+
+
+
+
+
+
+
 def main():
     pass
     sequential_data = read_data ("sequential.json", "unordered_numbers")
