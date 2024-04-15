@@ -1,39 +1,38 @@
-##	Sekvenční vyhledávání v neseřazeném seznamu
-Mějme naše data uložena v iterovatelné datové struktuře (např. seznamu, kde pořadí každé hodnoty je dáno jejím indexem). Základní způsob nalezení konkrétní hodnoty pak spočívá jednoduše v tom, že postupně (v sekvenci) projdeme každý prvek seznamu, dokud nenalezneme naši hodnotu. 
+## Řazení výběrem (Selection Sort)
+Selection Sort patří mezi jednoduché nestabilní řadící algoritmy. Jeho výhodou mezi algoritmy s obdobnou asymptotickou složitostí je především konstantní paměťová náročnost. Základní princip algoritmu pro seřazení čísel v seznamu vypadá následovně:
 
-![img 1](img/sequential.png)
+* Najdi nejmenší prvek v seznamu a prohoď jeho pozici s prvním prvkem seznamu.
+* Najdi druhý nejmenší prvek v seznamu a prohoď jeho pozici s druhým prvkem seznamu.
+* Opakuj činnost, dokud nejsou seřazeny všechny prvky.
+* Vrať seřazenou posloupnost.
 
->Pokud vyhledáváme v neseřazeném seznamu znamená to, že jednotlivé prvky byly do seznamu umístěny náhodně. Při každém porovnání s hledanou hodnotou může a nemusí dojít k nalezení prvku. Jinými slovy, v každé iteraci je (většinou) stejná pravděpodobnost, že nalezneme hledaný prvek.
+Vizuální ukázka pro první dva kroky algoritmu může vypadat např. takto:
 
-<br />
-<br />
+![img 1](img/selection.png)
 
-##	Vyhledávání vzoru
-V předchozím příkladu jsme vyhledávali vždy jen jeden specifický element. V celé řadě případů je však nutné vyhledávat posloupnost elementů, tzv. vzor. V následujícím příkladu si rozšíříme příklad z předchozího úkolu na vyhledávání vzorů v sekvenci DNA.
-Mějme naše data opět uložena v iterovatelné datové struktuře – textovém řetězci. Naivní algoritmus nalezení pozice vzoru opět spočívá jednoduše v tom, že postupně (v sekvenci) projdeme prvky řetězce, dokud nenalezneme přesnou shodu na všech pozicích mezi vzorem a podřetězcem prohlédavané sekvence.
+## Bublinkové řazení (Bubble Sort)
+Bubble Sort patří mezi nejjednodušší stabilní algoritmy řazení. Algoritmus pracuje na principu probublávání čísel požadovaným směrem. Základní princip algoritmu pro vzestupné seřazení čísel v seznamu vypadá následovně:
 
-![img 1](img/pattern.png)
+* Začni na první pozici.
+* Porovnej dva po sobě jdoucí prvky. Pokud má první prvek větší hodnotu než prvek druhý, prohoď jejich pořadí.
+* Posuň se o jednu pozici.
+* Opakuj bod číslo 2 a 3 pro celou sekvenci. (Po prvním průchodu celou sekvencí došlo k probublání největší hodnoty na poslední pozici)
+* Opakuj dokud není seřazena celá sekvence.
 
-Základní princip algoritmu pro nalezení pozic vzoru v sekvenci může vypadat např. takto:
+Vizuální ukázka pro první tři iterace algoritmu může vypadat např. takto:
 
-* Nastav ukazatel v analyzované sekvenci na podřetězec v rozsahu nultý až m-tý prvek, kde m je délka vzoru.
-* Porovnej shodu prvků mezi vzorem a podřetězcem.
-* Pokud jsou všechny prvky shodné, ulož pozici prostředního prvku podřetězce.
-* Posuň ukazatel o jedno pozici doprava.
-* Opakuj předchozí kroky dokud existuje oblast, která ještě nebyla prohledána. 
+![img_2](img/bubble.png)
 
-<br />
-<br />
+## Řazení vkládáním (Insertion Sort)
+Insertion Sort je další ze stabilních řadících algoritmů a v praxi bývá efektivnější než dosud zmíněné algoritmy Selection Sort a Bubble sort. Tento algoritmus funguje podobně jako třídění karet v ruce při některé z karetních her. Princip algoritmu pro vzestupné seřazení je následující:
 
-##	Binární vyhledávání na seřazené sekvenci
-Binární vyhledávání využívá výhodu, kterou nám poskytuje seřazení hodnot v datové struktuře. Jedná se o algoritmus typu Rozděl a panuj (Divide and Conquer) s jejichž obecnou podstatou se seznámíme později. Základní myšlenkou algoritmu je postupné rozdělení problému na menší  části. Z řešení dílčích částí poté sestavíme celkový výsledek. Základní princip algoritmu pro vrácení pozice hledané hodnoty vypadá následovně:
+* Začni na první pozici, tento prvek považuj za seřazený. Zbylou část sekvence považuj za neseřazenou.
+* Vezmi první prvek z neseřazené oblasti.
+* Porovnej tento prvek s jeho předchůdcem (tedy posledním prvkem v seřazené oblasti). Pokud je předchůdce větší než prvek, který chceme zařadit, posuň ho o jednu pozici doprava. (Tak vznikne místo pro nový prvek.) 
+* Opakuj bod tři dokud existují v seřazené oblasti čísla větší než číslo, které chceme zařadit.
+* Vlož prvek do seřazené oblasti.
+* Pokračuj dalším prvkem z neseřazené oblasti, opakuj body 3 až 6.
 
-* Zkontroluj prostřední prvek. Pokud obsahuje hledanou hodnotu, ukonči hledání a vrať pozici prostředního prvku.
-* Pokud je prostřední prvek menší než hledané číslo, zmenši oblast prohledávání na pravou půlku seznamu.
-* Pokud je prostřední prvek větší než hledané číslo, zmenši oblast prohledávání na levou polovinu seznamu.
-* Opakuj předchozí kroky dokud existuje oblast, která ještě nebyla prohledána. 
+Vizuální ukázka pro první tři iterace algoritmu je níže:
 
-Vizuální ukázka pro hledání hodnoty 45 může vypadat např. takto:
-
-![img 1](img/binary.png)
-
+![img_3](img/insertion.png)
